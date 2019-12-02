@@ -43,22 +43,22 @@ function daBears() {
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = ["papaBear", "mamaBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ["mamaBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
@@ -83,8 +83,21 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
+class Vehicle {
+	constructor() {
+		this.gasRemaining = 100;
+	}
+}
 
+Vehicle.prototype.drive = function() {
+	this.gasRemaining -= 25;
+}
 
+var charger = new Vehicle();
+var mustang = new Vehicle();
+charger.drive();
+mustang.drive();
+mustang.drive();
 
 
 // -----------------------------------------------------------------------------
@@ -109,6 +122,18 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
+function String() {
+
+}
+
+String.prototype.grammarPolice = function(str) {
+	str = str.toLowerCase();
+	var array = str.split(' ');
+	for (var ndx in array) {
+		array[ndx] = array[ndx].charAt(0).toUpperCase() + array[ndx].slice(1);
+	}
+	return array.join(' ');
+}
 
 
 // *************
@@ -126,6 +151,61 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // In all other cases, return "Different values"
 
 // CODE HERE...
+
+function haveSameValue(coll1, coll2) {
+	if(typeof coll1 ==="object" && typeof coll2 ==="object") {
+		var vals1 = Object.values(coll1)
+		var vals2 = Object.values(coll2)
+
+		var count1 = 0;
+		var count2 = 0;
+
+		for (var i = 0; i < vals1.length; i++) {
+			if(vals1[i] === vals2[i]) {
+				count1 ++
+			}
+		}
+		for (var i = 0; i < vals2.length; i++) {
+			if(vals2[i] === vals1[i]) {
+				count2 ++
+			}
+		}
+
+		if(count1 === vals1.length && count2 === vals2.length) {
+			return true
+		} else {return false}
+	}
+}
+ 
+function valueType(arg1, arg2) {
+
+	//handles if both params are arrays
+	if(Array.isArray(arg1) === true && Array.isArray(arg2) === true) {
+		if(arg1.length === arg2.length) {
+			var count = 0;
+			for (var i = 0; i < arg1.length; i++) {
+				if(arg1[i] === arg2[i]) {
+					count++;
+				}
+			}
+			if(count === arg1.length) {
+					return "Exactly the same"
+				}
+				else {
+					return "Different values"
+				}
+		}
+		else {
+			return "Different values"
+		}
+	}
+	//if the params are either objs or arrs 
+	if(haveSameValue(arg1, arg2)) {
+		//if
+	}
+
+
+}
 
 // *************
 // * PROBLEM 5 *
